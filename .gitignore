@@ -1,1 +1,6 @@
 env
+*.csv
+*.json
+*.xml
+*.log
+.env
