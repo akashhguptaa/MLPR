@@ -17,16 +17,21 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.12.2"
+          python-version: "3.12"
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install jupyter nbconvert wandb opencv-python matplotlib numpy scikit-learn dotenv-python scipy
+          pip install jupyter nbconvert wandb opencv-python matplotlib numpy scikit-learn python-dotenv scipy
+
+      - name: Load environment variables
+        run: |
+          echo "Loading .env file..."
+          cat .env >> $GITHUB_ENV
 
       - name: Configure wandb
         env:
-          WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }}
+          WANDB_API_KEY: ${{ env.WANDB_API_KEY }}
         run: |
           wandb login $WANDB_API_KEY
 
@@ -37,7 +42,7 @@ jobs:
       - name: Log metrics and images to wandb
         run: |
           python -c "
-              import wandb
-              wandb.init(project='your_project_name')
-              wandb.save('executed_notebook.ipynb')
-              "
+          import wandb
+          wandb.init(project='your_project_name')
+          wandb.save('executed_notebook.ipynb')
+          "
