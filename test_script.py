@@ -2,9 +2,9 @@ import os
 from PIL import Image
 
 file_paths = [
-    "lab_5.ipynb",
-    "Images/Dr_Shashi_Tharoor.jpg",
-    "Images/Plaksha_Faculty.jpg",
+    "akash_lab_5.ipynb",
+    "images/Dr_Shashi_Tharoor.jpg",
+    "images/Plaksha_Faculty.jpg",
 ]
 
 def check_file_exists(file_path):
