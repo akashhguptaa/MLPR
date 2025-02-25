@@ -3,8 +3,8 @@ from PIL import Image
 
 file_paths = [
     "lab_5.ipynb",
-    "data/Dr_Shashi_Tharoor.jpg",
-    "data/Plaksha_Faculty.jpg",
+    "Images/Dr_Shashi_Tharoor.jpg",
+    "Images/Plaksha_Faculty.jpg",
 ]
 
 def check_file_exists(file_path):
