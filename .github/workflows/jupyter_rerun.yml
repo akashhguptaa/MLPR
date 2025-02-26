@@ -28,27 +28,25 @@ jobs:
       - name: Download haarcascade_frontalface_default.xml
         run: |
           mkdir -p images
-          wget -O haarcascade_frontalface_default.xml https://github.com/opencv/opencv/raw/master/data/haarcascades/haarcascade_frontalface_default.xml
-
-      # - name: Load environment variables
-      #   run: |
-      #     echo "Loading .env file..."
-      #     cat .env >> $GITHUB_ENV
+          wget -O images/haarcascade_frontalface_default.xml https://github.com/opencv/opencv/raw/master/data/haarcascades/haarcascade_frontalface_default.xml
 
       - name: Configure wandb
         env:
-          WANDB_API_KEY: ${{ env.WANDB_API_KEY }}
+          WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }}
         run: |
           wandb login $WANDB_API_KEY
 
       - name: Execute Jupyter Notebook
         run: |
-          jupyter nbconvert --to notebook --execute "lab_5.ipynb" --output  "output_notebook.ipynb" --ExecutePreprocessor.kernel_name=nbkernel --debug
+          jupyter nbconvert --to notebook --execute "lab_5.ipynb" --output "output_notebook.ipynb" --ExecutePreprocessor.kernel_name=python3 --debug
 
       - name: Log metrics and images to wandb
+        env:
+          WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }}
         run: |
           python -c "
           import wandb
+          wandb.login(key='$WANDB_API_KEY')
           wandb.init(project='distance_classification_project')
           wandb.save('output_notebook.ipynb')
           "
