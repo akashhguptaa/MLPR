@@ -28,7 +28,7 @@ jobs:
       - name: Download haarcascade_frontalface_default.xml
         run: |
           mkdir -p images
-          wget -O data/haarcascade_frontalface_default.xml https://github.com/opencv/opencv/raw/master/data/haarcascades/haarcascade_frontalface_default.xml
+          wget -O haarcascade_frontalface_default.xml https://github.com/opencv/opencv/raw/master/data/haarcascades/haarcascade_frontalface_default.xml
 
       - name: Load environment variables
         run: |
