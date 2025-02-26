@@ -30,10 +30,10 @@ jobs:
           mkdir -p images
           wget -O haarcascade_frontalface_default.xml https://github.com/opencv/opencv/raw/master/data/haarcascades/haarcascade_frontalface_default.xml
 
-      - name: Load environment variables
-        run: |
-          echo "Loading .env file..."
-          cat .env >> $GITHUB_ENV
+      # - name: Load environment variables
+      #   run: |
+      #     echo "Loading .env file..."
+      #     cat .env >> $GITHUB_ENV
 
       - name: Configure wandb
         env:
