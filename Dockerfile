@@ -6,6 +6,6 @@ COPY . .
 
 RUN apt-get update && apt-get install -y libgl1-mesa-glx
 
-RUN pip install numpy pandas scikit-learn opencv-python pillow wandb
+RUN pip install numpy pandas scikit-learn opencv-python pillow wandb opencv-python-headless
 
 CMD ["python", "distance_classification.py"]

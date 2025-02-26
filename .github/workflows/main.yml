@@ -17,5 +17,5 @@ jobs:
         run: |
           pip install numpy pandas scikit-learn opencv-python pillow
 
-      - name: Run test script
+      - name: Verify  files and images
         run: python test_script.py
